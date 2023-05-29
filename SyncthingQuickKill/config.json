@@ -1,0 +1,6 @@
+{
+"label":	"Kill Syncthing",
+"icon":	"icon/icon.png",
+"launch":	"launch.sh",
+"description":	"Kill Syncthing for this session"
+}

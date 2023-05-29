@@ -1,0 +1,6 @@
+{
+"label":	"Syncthing",
+"icon":	"icon/icon.png",
+"launch":	"launch.sh",
+"description":	"Initial setup and runtime.sh inject"
+}

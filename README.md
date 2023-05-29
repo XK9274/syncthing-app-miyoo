@@ -1,5 +1,8 @@
 # syncthing-app-miyoo
 Sets up Syncthing and injects into Onion 4.2.0 beta 3 runtime.sh
+![syncthing](https://github.com/XK9274/syncthing-app-miyoo/assets/47260768/c705ce9c-ad1e-4e66-ac43-9ea16c82cf26)
+![Syncthing_001](https://github.com/XK9274/syncthing-app-miyoo/assets/47260768/600624d1-fe60-4cfb-8d2a-3cefd71627a7)
+
 
 ## Issues 
 - Will run as root as we can't add/remove users.
@@ -28,6 +31,6 @@ If you wish to remove syncthing from running at boot, open /.tmp_update/runtime.
 `/mnt/SDCARD/App/Syncthing/bin/syncthing --home=/mnt/SDCARD/App/Syncthing/config/ > /mnt/SDCARD/App/Syncthing/logfile.log 2>&1 & #SYNCTHING INJECTOR`
 	
 ## Source
-https://github.com/syncthing/syncthing
-https://github.com/XK9274/texpop-miyoo
-https://github.com/XK9274/splash-miyoo
+- https://github.com/syncthing/syncthing
+- https://github.com/XK9274/texpop-miyoo
+- https://github.com/XK9274/splash-miyoo

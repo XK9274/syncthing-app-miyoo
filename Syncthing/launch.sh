@@ -39,7 +39,7 @@ checkstatus() {
 injectruntime() {
     $TP 1 "Injecting config into runtime.sh..." 0882C8 30 -1 25 
     refreshscreen 
-    sed -i '/# Main runtime loop/i \\	/mnt/SDCARD/App/Syncthing/bin/syncthing --home=/mnt/SDCARD/App/Syncthing/config/ > /mnt/SDCARD/App/Syncthing/logfile.log 2>&1 & #SYNCTHING INJECTOR' $sysdir/runtime.sh
+    sed -i '/# Main runtime loop/i \\	sh /mnt/SDCARD/App/Syncthing/script/checkrun.sh #SYNCTHING INJECTOR' $sysdir/runtime.sh
     touch /mnt/SDCARD/App/Syncthing/config/gotime
     if grep -q "#SYNCTHING INJECTOR" "$sysdir/runtime.sh"; then
         $TP 1 "Injection successful..." 0882C8 30 -1 25 

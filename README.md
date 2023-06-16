@@ -29,8 +29,8 @@ After the first run you shouldn't have to run the app again unless you want to k
 	
 Syncthing will now start up on boot (main launch) and be accessible by your IP address on wifi (!Not your hotspot address..!)
 
-If you wish to remove syncthing from running at boot, open /.tmp_update/runtime.sh and remove line 99:
-`/mnt/SDCARD/App/Syncthing/bin/syncthing --home=/mnt/SDCARD/App/Syncthing/config/ > /mnt/SDCARD/App/Syncthing/logfile.log 2>&1 & #SYNCTHING INJECTOR`
+If you wish to remove syncthing from running at boot, open /.tmp_update/runtime.sh and remove the line that contains:
+`#SYNCTHING INJECTOR`
 	
 ## Source
 - https://github.com/syncthing/syncthing

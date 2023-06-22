@@ -57,6 +57,8 @@ startsyncthing() {
 		refreshscreenn 
 		/mnt/SDCARD/App/Syncthing/bin/syncthing serve --home=/mnt/SDCARD/App/Syncthing/config/ > /mnt/SDCARD/App/Syncthing/serve.log 2>&1 &
 	fi
+	refreshscreen
+	sleep 0.5
 }
 
 firststart() {

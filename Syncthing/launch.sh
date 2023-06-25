@@ -75,9 +75,9 @@ changeguiip() {
 	sync
     IP=$(ip route get 1 | awk '{print $NF;exit}')
     $TP 1 "Changing GUI IP:Port to $IP:8384" 0882C8 30 -1 25 
-    sed -i "s|<address>127.0.0.1:8384</address>|<address>$IP:8384</address>|g" /mnt/SDCARD/App/Syncthing/config/config.xml
+    sed -i "s|<address>127.0.0.1:8384</address>|<address>0.0.0.0:8384</address>|g" /mnt/SDCARD/App/Syncthing/config/config.xml
 	refreshscreen
-    if [[ $? -eq 0 && $(grep -c "<address>$IP:8384</address>" /mnt/SDCARD/App/Syncthing/config/config.xml) -gt 0 ]]; then
+    if [[ $? -eq 0 && $(grep -c "<address>0.0.0.0:8384</address>" /mnt/SDCARD/App/Syncthing/config/config.xml) -gt 0 ]]; then
         $TP 1 "GUI IP set to $IP:8384" 0882C8 30 -1 25 
 		refreshscreen
     else
@@ -110,6 +110,9 @@ refreshscreen
 if [ -f "/mnt/SDCARD/App/Syncthing/config/gotime" ]; then
 	refreshscreen
     $TP 1 "We're already configured.." 0882C8 30 -1 25 
+	sleep 0.5
+	IP=$(ip route get 1 | awk '{print $NF;exit}')
+	$TP 1 "IP Address: $IP:8384" 0882C8 30 -1 25 
 	sleep 0.5
 	checkstatus
 	if syncthingpid; then 

@@ -57,6 +57,7 @@ changeguiip() {
     sed -i "s|<address>127.0.0.1:8384</address>|<address>$IP:8384</address>|g" $appdir/config/config.xml
     if [[ $? -eq 0 && $(grep -c "<address>$IP:8384</address>" $appdir/config/config.xml) -gt 0 ]]; then
         build_infoPanel "GUI IP set to $IP:8384"
+        sleep 5
     else
         build_infoPanel "Failed to set IP address"
     fi

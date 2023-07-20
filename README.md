@@ -1,7 +1,7 @@
 # syncthing-app-miyoo
 
 Sets up Syncthing and injects into Onion 4.2.0 beta runtime.sh
-![Syncthing_001](https://github.com/XK9274/syncthing-app-miyoo/assets/47260768/600624d1-fe60-4cfb-8d2a-3cefd71627a7)
+
 ![syncthing](https://github.com/XK9274/syncthing-app-miyoo/assets/47260768/c705ce9c-ad1e-4e66-ac43-9ea16c82cf26)
 ![2](https://github.com/XK9274/syncthing-app-miyoo/assets/47260768/98dc6645-e280-43d1-9910-56b51ead859a)
 

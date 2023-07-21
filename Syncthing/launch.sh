@@ -23,7 +23,7 @@ syncthingpid() {
 
 injectruntime() {
     build_infoPanel "Injecting config into runtime.sh..."
-    sed -i '/# Main runtime loop/i \\	sh $appdir/script/checkrun.sh #SYNCTHING INJECTOR' $sysdir/runtime.sh
+    sed -i '/# Main runtime loop/i \\	sh /mnt/SDCARD/App/Syncthing/script/checkrun.sh #SYNCTHING INJECTOR #SYNCTHING INJECTOR' $sysdir/runtime.sh
     touch $appdir/config/gotime
     if grep -q "#SYNCTHING INJECTOR" "$sysdir/runtime.sh"; then
         build_infoPanel "Injection successful..."

@@ -1,5 +1,13 @@
 # syncthing-app-miyoo
 
+## If you have issues with syncthing not running at startup after updating Onion:
+
+- Go to `/mnt/SDCARD/App/Syncthing/config
+- Delete the `gotime` file
+- Re-run the installer
+
+You won't lose your config, this will just re-inject the startup line into onions runtime.
+
 Sets up Syncthing and injects into Onion 4.2.0 beta runtime.sh
 
 ![syncthing](https://github.com/XK9274/syncthing-app-miyoo/assets/47260768/c705ce9c-ad1e-4e66-ac43-9ea16c82cf26)
@@ -10,8 +18,6 @@ Sets up Syncthing and injects into Onion 4.2.0 beta runtime.sh
 - Will run as root as we can't add/remove users.
 - On OnionOS 4.2.0 dev3 you may have issues where Main hangs after the app quits, press x or y then back and you should be unlocked again.
 - Device name will be (none) as the hostname never gets set. You can set this by changing the first line containing (none) in the config.xml file in the Syncthing App folder (and then restart)
-- It uses the hostname when generating config for the device name, which can be checked with `uname -n` and set with `hostname MYHOSTNAME` but changing the config.xml is best.
-- The installer is slow as it redraws a splash and text, any quicker and redraws over the top of itself.. I'll maybe remake it in C.
 
 ## Usage
 
@@ -43,5 +49,3 @@ If you wish to remove syncthing from running at boot, open /.tmp_update/runtime.
 ## Source
 
 - https://github.com/syncthing/syncthing
-- https://github.com/XK9274/texpop-miyoo
-- https://github.com/XK9274/splash-miyoo

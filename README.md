@@ -8,7 +8,13 @@
 
 You won't lose your config, this will just re-inject the startup line into onions runtime.
 
-Sets up Syncthing and injects into Onion 4.2.0 beta runtime.sh
+## If you want your save files to be organised as they are on other devices (not in subfolders):
+
+![image](https://github.com/XK9274/syncthing-app-miyoo/assets/47260768/3fa4ad2a-76c0-4939-b8df-da24c7f93568)
+
+(ty u/dnascimento)
+
+## App to setup Syncthing and inject into Onion 4.2.0 beta runtime.sh to start at boot.
 
 ![syncthing](https://github.com/XK9274/syncthing-app-miyoo/assets/47260768/c705ce9c-ad1e-4e66-ac43-9ea16c82cf26)
 ![2](https://github.com/XK9274/syncthing-app-miyoo/assets/47260768/98dc6645-e280-43d1-9910-56b51ead859a)

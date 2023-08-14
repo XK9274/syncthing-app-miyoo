@@ -54,7 +54,7 @@ changeguiip() {
 	sync
     IP=$(ip route get 1 | awk '{print $NF;exit}')
     build_infoPanel "Setting IP" "Changing GUI IP:Port to $IP:8384"
-    sed -i "s|<address>127.0.0.1:8384</address>|<address>$IP:8384</address>|g" $appdir/config/config.xml
+    sed -i "s|<address>127.0.0.1:8384</address>|<address>0.0.0.0:8384</address>|g" $appdir/config/config.xml
     if [[ $? -eq 0 && $(grep -c "<address>$IP:8384</address>" $appdir/config/config.xml) -gt 0 ]]; then
         build_infoPanel "GUI IP set to $IP:8384"
         sleep 5

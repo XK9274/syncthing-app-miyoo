@@ -1,5 +1,9 @@
 # syncthing-app-miyoo
 
+### Check out this guide by [The-Phyrex](https://www.reddit.com/user/The-Phyrex/) to help get setup.
+https://www.youtube.com/watch?v=UjVmqVoouYs
+
+
 ## If you have issues with syncthing not running at startup after updating Onion:
 
 - Go to `/mnt/SDCARD/App/Syncthing/config

@@ -6,7 +6,7 @@ https://www.youtube.com/watch?v=UjVmqVoouYs
 
 ## If you have issues with syncthing not running at startup after updating Onion:
 
-- Go to `/mnt/SDCARD/App/Syncthing/config
+- Go to `/mnt/SDCARD/App/Syncthing/config`
 - Delete the `gotime` file
 - Re-run the installer
 

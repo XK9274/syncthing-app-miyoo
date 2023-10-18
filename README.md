@@ -4,14 +4,6 @@
 https://www.youtube.com/watch?v=UjVmqVoouYs
 
 
-## If you have issues with syncthing not running at startup after updating Onion:
-
-- Go to `/mnt/SDCARD/App/Syncthing/config`
-- Delete the `gotime` file
-- Re-run the installer
-
-You won't lose your config, this will just re-inject the startup line into onions runtime.
-
 ## If you want your save files to be organised as they are on other devices (not in subfolders):
 
 ![image](https://github.com/XK9274/syncthing-app-miyoo/assets/47260768/3fa4ad2a-76c0-4939-b8df-da24c7f93568)

@@ -6,6 +6,7 @@ LD_LIBRARY_PATH="$appdir/lib:/lib:/config/lib:$miyoodir/lib:$sysdir/lib:$sysdir/
 PATH="$sysdir/bin:$PATH"
 TP=$appdir/bin/texpop
 appdir=/mnt/SDCARD/App/Syncthing
+skiplast=0
 
 check_injector() {
     if grep -q "#SYNCTHING INJECTOR" "$sysdir/runtime.sh"; then
@@ -61,8 +62,18 @@ firststart() {
 changeguiip() {
 	sync
     IP=$(ip route get 1 | awk '{print $NF;exit}')
+    
+    if grep -q "<address>0.0.0.0:8384</address>" $appdir/config/config.xml; then
+        build_infoPanel "IP already setup in config"
+        sleep 1
+        build_infoPanel "GUI IP is $IP:8384"
+        skiplast=1
+        sleep 5
+    fi
+
     build_infoPanel "Setting IP" "Changing GUI IP:Port to $IP:8384"
     sed -i "s|<address>127.0.0.1:8384</address>|<address>0.0.0.0:8384</address>|g" $appdir/config/config.xml
+
     if [[ $? -eq 0 && $(grep -c "<address>0.0.0.0:8384</address>" $appdir/config/config.xml) -gt 0 ]]; then
         build_infoPanel "GUI IP set to $IP:8384"
         sleep 5
@@ -98,5 +109,7 @@ else
     injectruntime
     changeguiip
     startsyncthing
-    build_infoPanel "Browse to $IP:8384 to setup!"
+    if [ "$skiplast" -ne 1 ]; then
+        build_infoPanel "Browse to $IP:8384 to setup!"
+    fi      
 fi

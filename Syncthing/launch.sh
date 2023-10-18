@@ -4,7 +4,6 @@ sysdir=/mnt/SDCARD/.tmp_update
 miyoodir=/mnt/SDCARD/miyoo
 LD_LIBRARY_PATH="$appdir/lib:/lib:/config/lib:$miyoodir/lib:$sysdir/lib:$sysdir/lib/parasyte"
 PATH="$sysdir/bin:$PATH"
-TP=$appdir/bin/texpop
 appdir=/mnt/SDCARD/App/Syncthing
 skiplast=0
 

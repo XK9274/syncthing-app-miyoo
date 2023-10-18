@@ -7,6 +7,14 @@ PATH="$sysdir/bin:$PATH"
 TP=$appdir/bin/texpop
 appdir=/mnt/SDCARD/App/Syncthing
 
+check_injector() {
+    if grep -q "#SYNCTHING INJECTOR" "$sysdir/runtime.sh"; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 build_infoPanel() {
     local message="$1"
 	local title="Syncthing Installer"
@@ -74,23 +82,21 @@ build_infoPanel "Syncthing setup"
 
 build_infoPanel "Checking if we're already configured..."
 
-if [ -f "$appdir/config/gotime" ]; then
-	
+if check_injector; then
     build_infoPanel "We're already configured.."
-	checkstatus
-	if syncthingpid; then 
-		
-		build_infoPanel "Running. killing until next reboot"
-		killall -9 syncthing
-		build_infoPanel "Finished" "Done..."
-	else
-		startsyncthing
-	fi
+
+    if syncthingpid; then
+        build_infoPanel "Running. killing until next reboot"
+        killall -9 syncthing
+        build_infoPanel "Finished" "Done..."
+    else
+        startsyncthing
+    fi
 else
-    build_infoPanel "We're not configured, starting"	
-	firststart
-	injectruntime
-	changeguiip
-	startsyncthing
-	build_infoPanel "Browse to $IP:8384 to setup!"
+    build_infoPanel "We're not configured, starting"    
+    firststart
+    injectruntime
+    changeguiip
+    startsyncthing
+    build_infoPanel "Browse to $IP:8384 to setup!"
 fi

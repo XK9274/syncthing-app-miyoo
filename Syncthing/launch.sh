@@ -40,6 +40,26 @@ injectruntime() {
     fi
 }
 
+repair_config() {
+    local config="$appdir/config/config.xml"
+
+    if grep -q "<listenAddress>dynamic+https://relays.syncthing.net/endpoint</listenAddress>" "$config"; then
+        build_infoPanel "Config not generated correctly, \n Manually repairing"
+        
+        sed -i '/<listenAddress>dynamic+https:\/\/relays.syncthing.net\/endpoint<\/listenAddress>/d' "$config"
+        sed -i '/<listenAddress>quic:\/\/0.0.0.0:41383<\/listenAddress>/d' "$config"
+        
+        sed -i 's|<listenAddress>tcp://0.0.0.0:41383</listenAddress>|<listenAddress>default</listenAddress>|' "$config"
+        sed -i 's|<address>127.0.0.1:40379</address>|<address>0.0.0.0:8384</address>|' "$config"
+        
+        if grep -q "<address>0.0.0.0:8384</address>" "$config" && grep -q "<listenAddress>default</listenAddress>" "$config"; then
+            build_infoPanel "Repair complete. \n GUI IP Forced to 0.0.0.0"
+        else
+            build_infoPanel "Failed to repair config \n Remove the app dir \n and try again"
+        fi
+    fi
+}
+
 startsyncthing() {
 	if syncthingpid; then
 		build_infoPanel "Already running..."
@@ -50,12 +70,15 @@ startsyncthing() {
 }
 
 firststart() {
-	if [ ! -f $appdir/config/config.xml ]; then
-		build_infoPanel "Config file not found, generating..."
-		$appdir/bin/syncthing generate --no-default-folder --home=$appdir/config/ > $appdir/generate.log 2>&1 &
-		sleep 5
-		pkill syncthing
-	fi
+    if [ ! -f $appdir/config/config.xml ]; then
+        build_infoPanel "Config file not found, generating..."
+        $appdir/bin/syncthing generate --no-default-folder --home=$appdir/config/ > $appdir/generate.log 2>&1 &
+        sleep 5
+        
+        repair_config # check if the config was generated correctly
+        
+        pkill syncthing
+    fi
 }
 
 changeguiip() {

@@ -44,6 +44,7 @@ If you wish to remove syncthing from running at boot, open /.tmp_update/runtime.
 
 ## Tips
 
+- When you upgrade to a new version of Onion OS you will have to delete the `gotime` file that is located at `/mnt/SDCARD/App/Syncthing/config`. Once that is deleted just restart the device and then run the installer again to be back up and running.
 - Set a password for access. Once you connect to the device via its IP:8384 in your browser click on "Actions" then "Settings" and under the "GUI" tab you will see fields for "GUI Authentication User" and "GUI Authentication Password". Don't forget the login info.
 - Here is the [LINK](https://docs.syncthing.net/users/faq.html) to the official Syncthing FAQ that should be able to answer most every question you will have.
 - If you're using filezilla to transfer files to the MMP you need to change the Transfer type to Binary in the Transfer menu at the top left otherwise binaries are broken on transfer and this will not run.
